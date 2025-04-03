@@ -1,0 +1,11 @@
+{
+  "name": "multi-stage-ci-cd-pipeline",
+  "version": "1.0.0",
+  "description": "A simple Node.js project with Jest testing",
+  "scripts": {
+    "test": "jest"
+  },
+  "devDependencies": {
+    "jest": "^29.0.0"
+  }
+}
