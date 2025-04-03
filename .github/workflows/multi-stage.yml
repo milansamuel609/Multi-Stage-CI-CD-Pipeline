@@ -1,0 +1,58 @@
+name: Multi-Stage CI/CD Pipeline
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+      - uses: actions/checkout@v4
+
+      - name: Install Node.js
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 18
+
+      - name: Install Dependencies
+      - run: npm install
+
+  test:
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Checkout Repository
+      - uses: actions/checkout@v4
+
+      - name: Install Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+
+      - name: Install Dependencies
+        run: npm install
+
+      - name: Run Tests
+        run: npm test
+
+  deploy:
+    runs-on: ubuntu-latest
+    needs: test
+    steps:
+      - name: Checkout Respository
+      - uses: actions/checkout@v4
+
+      - name: Setup Github Pages
+      - uses: actions/configure-pages@v4
+
+      - name: Upload Build Artifacts
+      - uses: actions/upload-pages-artifact@v4
+        with:
+          path: .
+
+      - name: Deploy to Github Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
