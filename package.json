@@ -1,11 +1,18 @@
 {
+  "dependencies": {
+    "multi-stage-ci-cd-pipeline": "file:"
+  },
+  "devDependencies": {
+    "jest": "^29.7.0"
+  },
   "name": "multi-stage-ci-cd-pipeline",
   "version": "1.0.0",
-  "description": "A simple Node.js project with Jest testing",
+  "description": "",
+  "main": "index.js",
   "scripts": {
     "test": "jest"
   },
-  "devDependencies": {
-    "jest": "^29.0.0"
-  }
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
 }
